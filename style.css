@@ -1,1 +1,291 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family: Arial, sans-serif;
+    background: #0f1117;
+    color: white;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+.game {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 18px;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(22px, 5vw, 36px);
+}
+
+header p {
+    margin: 5px 0 0;
+    color: #aab0bd;
+}
+
+#resetBtn {
+    background: #252a36;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 12px;
+}
+
+#resetBtn:active {
+    transform: scale(.95);
+}
+
+/* STATS */
+
+.stats {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.stats div {
+    flex: 1;
+    background: #191d26;
+    border: 1px solid #292f3c;
+    border-radius: 14px;
+    padding: 10px;
+    text-align: center;
+}
+
+.stats span {
+    display: block;
+    color: #9299a8;
+    font-size: 12px;
+}
+
+.stats b {
+    display: block;
+    margin-top: 3px;
+    font-size: 18px;
+}
+
+/* PUZZLE */
+
+main {
+    width: 100%;
+}
+
+#puzzle {
+    width: min(92vw, 700px);
+    aspect-ratio: 1 / 1;
+    margin: auto;
+
+    display: grid;
+
+    background: #050609;
+    border: 3px solid #303746;
+    border-radius: 14px;
+    overflow: hidden;
+
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.piece {
+    position: relative;
+
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    cursor: pointer;
+
+    transition:
+        transform .15s ease,
+        filter .15s ease,
+        box-shadow .15s ease;
+}
+
+.piece:active {
+    transform: scale(.94);
+}
+
+.piece.selected {
+    z-index: 5;
+    transform: scale(.92);
+    filter: brightness(1.25);
+    box-shadow:
+        inset 0 0 0 3px #ffffff,
+        0 0 20px rgba(255,255,255,.4);
+}
+
+#instruction {
+    text-align: center;
+    color: #8e96a7;
+    font-size: 14px;
+    margin: 15px 0;
+}
+
+/* WIN SCREEN */
+
+#message {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.75);
+    backdrop-filter: blur(8px);
+
+    z-index: 100;
+}
+
+#message.hidden {
+    display: none;
+}
+
+.win-box {
+    width: min(90vw, 400px);
+    background: #181c25;
+
+    border: 1px solid #303746;
+    border-radius: 22px;
+
+    padding: 30px;
+    text-align: center;
+
+    box-shadow: 0 20px 70px rgba(0,0,0,.5);
+
+    animation: popup .25s ease;
+}
+
+.win-icon {
+    font-size: 55px;
+}
+
+.win-box h2 {
+    margin: 10px 0;
+}
+
+.win-box p {
+    color: #aeb5c3;
+}
+
+#nextBtn {
+    width: 100%;
+    margin-top: 15px;
+
+    padding: 13px;
+
+    border-radius: 12px;
+
+    background: white;
+    color: #111;
+
+    font-weight: bold;
+}
+
+#nextBtn:active {
+    transform: scale(.97);
+}
+
+@keyframes popup {
+    from {
+        transform: scale(.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 480px) {
+
+    .game {
+        padding: 12px;
+    }
+
+    header {
+        align-items: center;
+    }
+
+    #resetBtn {
+        padding: 9px 12px;
+        font-size: 14px;
+    }
+
+    .stats {
+        margin: 14px 0;
+    }
+
+    .stats div {
+        padding: 8px;
+    }
+
+    #puzzle {
+        width: 94vw;
+        border-radius: 10px;
+    }
+
+    .win-box {
+        padding: 25px 18px;
+    }
+}
+
+/* LANDSCAPE MOBILE */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .game {
+        max-width: 850px;
+        padding: 8px 15px;
+    }
+
+    header {
+        margin-bottom: 5px;
+    }
+
+    .stats {
+        margin: 7px 0;
+    }
+
+    #puzzle {
+        width: min(70vh, 600px);
+    }
+
+    #instruction {
+        margin: 6px;
+    }
+}
