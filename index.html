@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Milanti Puzzle</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="game">
+
+    <header>
+        <div>
+            <h1>🧩 Milanti Puzzle</h1>
+            <p id="levelText">Level 1</p>
+        </div>
+
+        <button id="resetBtn">↻ Reset</button>
+    </header>
+
+    <div class="stats">
+        <div>
+            <span>Moves</span>
+            <b id="moves">0</b>
+        </div>
+
+        <div>
+            <span>Time</span>
+            <b id="timer">00:00</b>
+        </div>
+    </div>
+
+    <main>
+        <div id="puzzle"></div>
+
+        <p id="instruction">
+            Tap two pieces to swap them
+        </p>
+    </main>
+
+    <div id="message" class="hidden">
+        <div class="win-box">
+            <div class="win-icon">🎉</div>
+            <h2 id="winTitle">Level Complete!</h2>
+            <p id="winInfo"></p>
+
+            <button id="nextBtn">Next Level →</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
